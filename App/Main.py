@@ -45,7 +45,7 @@ def check_if_finished():
 def open_popup():
     popup = tk.Toplevel(win)
     popup.title("Song Finished")
-    popup.geometry("300x150")
+    popup.geometry("500x250")
     popup.config(background="lightyellow")
 
     label = tk.Label(popup, text="song ended")
