@@ -52,15 +52,15 @@ def open_popup():
     label.pack(pady=20)
     #BUTTONS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!TODO:May be buggy
     # Play button
-    play_button = tk.Button(win, text="Play", command=play_music)
+    play_button = tk.Button(popup, text="Play", command=play_music)
     play_button.pack(pady=10)
     play_button.config(background="green")
     #Stop button!!!!!!!!!!!!!!!!
-    stop_button = tk.Button(win, text="Stop", command=stop_music)
+    stop_button = tk.Button(popup, text="Stop", command=stop_music)
     stop_button.pack(pady=10)
     stop_button.config(background="red")
     # Add File button
-    add_button = tk.Button(win, text="Add MP3", command=add_file)
+    add_button = tk.Button(popup, text="Add MP3", command=add_file)
     add_button.pack(pady=10)
     add_button.config(background="blue")
     # Dropdown menu for selecting MP3 files
@@ -68,7 +68,7 @@ def open_popup():
     file_var.set("Select a file")  # Default value for the dropdown
 
     # Dropdown menu for file selection
-    dropdown = tk.OptionMenu(win, file_var, *mp3_files.keys())
+    dropdown = tk.OptionMenu(popup, file_var, *mp3_files.keys())
     dropdown.pack(pady=10)
     dropdown.config(background="orange")
 
