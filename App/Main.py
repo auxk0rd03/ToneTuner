@@ -63,6 +63,15 @@ def open_popup():
     add_button = tk.Button(win, text="Add MP3", command=add_file)
     add_button.pack(pady=10)
     add_button.config(background="blue")
+    # Dropdown menu for selecting MP3 files
+    file_var = StringVar(win)
+    file_var.set("Select a file")  # Default value for the dropdown
+
+    # Dropdown menu for file selection
+    dropdown = tk.OptionMenu(win, file_var, *mp3_files.keys())
+    dropdown.pack(pady=10)
+    dropdown.config(background="orange")
+
 
     #close button that closes the application
     close_button = tk.Button(popup, text="Close", command=popup.destroy)
