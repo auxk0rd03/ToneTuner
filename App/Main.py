@@ -58,7 +58,7 @@ def open_popup():
 
     label = tk.Label(popup, text="song ended")
     label.pack(pady=20)
-    #BUTTONS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!TODO:May be buggy
+    #BUTTONS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!TODO:May be buggy(Update...it is buggy :] )
     # Play button
     play_button = tk.Button(popup, text="Play", command=play_music)
     play_button.pack(pady=10)
