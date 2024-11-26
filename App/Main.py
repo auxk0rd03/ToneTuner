@@ -15,7 +15,7 @@ import os
 # Initialize Pygame mixer
 mixer.init()
 
-# Dictionary to store MP3 files (initial list; replace with paths to your files)
+# Dictionary to store MP3 files format--> (Name of Song: local file location)
 mp3_files = {
     "Bad_at_coding.mp3": "Songs/Bad_at_coding.mp3",
     "Shitty_programmer.mp3": "Songs/Shitty_programmer.mp3"
