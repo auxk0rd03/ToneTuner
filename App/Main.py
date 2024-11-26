@@ -50,7 +50,21 @@ def open_popup():
 
     label = tk.Label(popup, text="song ended")
     label.pack(pady=20)
+    #BUTTONS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!TODO:May be buggy
+    # Play button
+    play_button = tk.Button(win, text="Play", command=play_music)
+    play_button.pack(pady=10)
+    play_button.config(background="green")
+    #Stop button!!!!!!!!!!!!!!!!
+    stop_button = tk.Button(win, text="Stop", command=stop_music)
+    stop_button.pack(pady=10)
+    stop_button.config(background="red")
+    # Add File button
+    add_button = tk.Button(win, text="Add MP3", command=add_file)
+    add_button.pack(pady=10)
+    add_button.config(background="blue")
 
+    #close button that closes the application
     close_button = tk.Button(popup, text="Close", command=popup.destroy)
     close_button.pack(pady=10)
 
