@@ -54,7 +54,7 @@ def open_popup():
     popup = tk.Toplevel(win)
     popup.title("Song Finished")
     popup.geometry("500x250")
-    popup.config(background="lightyellow")
+    popup.config(background="wheat2")
 
     label = tk.Label(popup, text="song ended")
     label.pack(pady=20)
@@ -62,15 +62,15 @@ def open_popup():
     # Play button
     play_button = tk.Button(popup, text="Play", command=play_music)
     play_button.pack(pady=10)
-    play_button.config(background="green")
+    play_button.config(background="SeaGreen1")
     #Stop button!!!!!!!!!!!!!!!!
     stop_button = tk.Button(popup, text="Stop", command=stop_music)
     stop_button.pack(pady=10)
-    stop_button.config(background="red")
+    stop_button.config(background="firebrick1")
     # Add File button!!!!!!!!!!!!!!!!
     add_button = tk.Button(popup, text="Add MP3", command=add_file)
     add_button.pack(pady=10)
-    add_button.config(background="blue")
+    add_button.config(background="cyan2")
     # Dropdown menu for selecting MP3 files!!!!!!!!!!!!!!!!
     file_var = StringVar(win)
     file_var.set("Select a file")  # Default value for the dropdown
@@ -78,7 +78,7 @@ def open_popup():
     # Dropdown menu for file selection
     dropdown = tk.OptionMenu(popup, file_var, *mp3_files.keys())
     dropdown.pack(pady=10)
-    dropdown.config(background="orange")
+    dropdown.config(background="coral")
 
 
     #close button that closes the application
@@ -87,9 +87,9 @@ def open_popup():
 
 # Create the main Tkinter window
 win = tk.Tk()
-win.title("MP3 Player")
+win.title("Tone Tuner")
 win.geometry("750x400")
-win.config(background="black")
+win.config(background="gray23")
 
 # Dropdown menu for selecting MP3 files
 file_var = StringVar(win)
@@ -98,22 +98,22 @@ file_var.set("Select a file")  # Default value for the dropdown
 # Dropdown menu for file selection
 dropdown = tk.OptionMenu(win, file_var, *mp3_files.keys())
 dropdown.pack(pady=10)
-dropdown.config(background="orange")
+dropdown.config(background="coral")
 
 # Play button
 play_button = tk.Button(win, text="Play", command=play_music)
 play_button.pack(pady=10)
-play_button.config(background="green")
+play_button.config(background="SeaGreen1")
 
 # Stop button
 stop_button = tk.Button(win, text="Stop", command=stop_music)
 stop_button.pack(pady=10)
-stop_button.config(background="red")
+stop_button.config(background="firebrick1")
 
 # Add File button
 add_button = tk.Button(win, text="Add MP3", command=add_file)
 add_button.pack(pady=10)
-add_button.config(background="blue")
+add_button.config(background="cyan2")
 
 # Run the Tkinter main loop
 win.mainloop()
