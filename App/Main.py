@@ -44,7 +44,7 @@ def add_file():
 
 # Function to check if the song has finished
 def check_if_finished():
-    if not mixer.music.get_busy():  # If music is not playing
+    if not mixer.music.get_busy():  # If the music is not playing
         open_popup()  # Show the popup window
     else:
         win.after(1000, check_if_finished)  # Check again in 1 second
@@ -67,11 +67,11 @@ def open_popup():
     stop_button = tk.Button(popup, text="Stop", command=stop_music)
     stop_button.pack(pady=10)
     stop_button.config(background="red")
-    # Add File button
+    # Add File button!!!!!!!!!!!!!!!!
     add_button = tk.Button(popup, text="Add MP3", command=add_file)
     add_button.pack(pady=10)
     add_button.config(background="blue")
-    # Dropdown menu for selecting MP3 files
+    # Dropdown menu for selecting MP3 files!!!!!!!!!!!!!!!!
     file_var = StringVar(win)
     file_var.set("Select a file")  # Default value for the dropdown
 
@@ -88,7 +88,7 @@ def open_popup():
 # Create the main Tkinter window
 win = tk.Tk()
 win.title("MP3 Player")
-win.geometry("500x300")
+win.geometry("750x400")
 win.config(background="black")
 
 # Dropdown menu for selecting MP3 files
