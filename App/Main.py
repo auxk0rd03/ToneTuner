@@ -3,12 +3,12 @@ from tkinter import StringVar, filedialog
 from pygame import mixer
 import os
 
-#TODO MAke play,pause and select song menu show up on the pop up!!!!!!!!!!!!!!!!!!!!!!!!!
+#TODO MAke play,pause and select song menu show up on the pop up-----Status-[COMPLETE]
 #TODO IN ORDER TO RUN THIS APP YOU NEED PYGAME INSTALLED
 #you can initalize the pop up by just pressing the stop button 
 
 """          !!!!!!!!!!!ISSUES!!!!!!!!!!!!!!!!!!!!!!!!!!
-#Whenever you press stop within the popup, it will create another pop-up from the popup
+#Whenever you press stop within the popup, it will create another pop-up from the popup||||| Status-[In-Progress]
 
 """
 
