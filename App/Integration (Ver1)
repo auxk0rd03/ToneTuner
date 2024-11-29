@@ -1,0 +1,140 @@
+import tkinter as tk
+from tkinter import StringVar, filedialog
+from pygame import mixer
+import os
+
+# Initialize Pygame mixer
+mixer.init()
+
+# Dictionary to store MP3 files format--> (Name of Song: local file location)
+mp3_files = {
+    "Bad_at_coding.mp3": "Songs/Bad_at_coding.mp3",
+    "Shitty_programmer.mp3": "Songs/Shitty_programmer.mp3"
+}
+
+# Current song index
+current_index = 0
+
+# Function to play the selected music file
+def play_music():
+    selected_file = mp3_files[file_var.get()]  # Get the file path from mp3_files dictionary
+    mixer.music.load(selected_file)  # Load the selected file
+    mixer.music.play()
+    check_if_finished()  # Start checking if the song has finished
+
+def stop_music():
+    mixer.music.stop()
+
+# Function to add a new MP3 file
+def add_file():
+    file_path = filedialog.askopenfilename(filetypes=[("MP3 Files", "*.mp3")])
+    if file_path:
+        file_name = os.path.basename(file_path)  # Get just the file name from the path
+        mp3_files[file_name] = file_path         # Add to dictionary with file name as key
+        file_var.set(file_name)                  # Set as current selection
+
+        # Update the dropdown menu with the new file
+        dropdown["menu"].add_command(label=file_name, command=tk._setit(file_var, file_name))
+
+# Function to check if the song has finished
+def check_if_finished():
+    if not mixer.music.get_busy():  # If the music is not playing
+        open_popup(current_index)  # Show the popup window
+    else:
+        win.after(1000, check_if_finished)  # Check again in 1 second
+
+# Function to open the popup window
+def open_popup(current_index):
+    popup = tk.Toplevel(win)
+    popup.title("Song Finished")
+    popup.geometry("500x250")
+    popup.config(background="wheat2")
+
+    # Song label
+    label = tk.Label(popup, text="song ended")
+    label.pack(pady=20)
+
+    # Play button
+    play_button = tk.Button(popup, text="Play", command=play_music)
+    play_button.pack(pady=10)
+    play_button.config(background="SeaGreen1")
+
+    # Stop button
+    stop_button = tk.Button(popup, text="Stop", command=stop_music)
+    stop_button.pack(pady=10)
+    stop_button.config(background="firebrick1")
+
+    # Close button to manually close the popup
+    close_button = tk.Button(popup, text="Close", command=popup.destroy)
+    close_button.pack(pady=10)
+
+    # Store the after callback ID
+    popup_close_id = None
+
+    # Function to close the popup after 5 seconds
+    def close_after_delay():
+        popup.destroy()
+
+    # Function to reset the timer every time an input is made
+    def reset_timer():
+        nonlocal popup_close_id
+        if popup_close_id:
+            popup.after_cancel(popup_close_id)  # Cancel the previous callback
+        popup_close_id = popup.after(5000, close_after_delay)  # Set a new 5-second timer
+
+    # Set the initial timer
+    reset_timer()
+
+    # Function to change the song and reset the timer
+    def change_song(offset):
+        nonlocal current_index  # Refers to the current_index in open_popup
+        current_index = (current_index + offset) % len(mp3_files)  # Wrap around the list
+        file_var.set(list(mp3_files.keys())[current_index])  # Update the selected song in dropdown
+        play_music()  # Start playing the new song
+        label.config(text=f"Now Playing: {list(mp3_files.keys())[current_index]}")  # Update song label
+
+        # Reset the auto-close timer
+        reset_timer()
+
+    # Forward button (Next Song)
+    forward_button = tk.Button(popup, text="Forward", command=lambda: change_song(1))
+    forward_button.pack(pady=10)
+    forward_button.config(background="SeaGreen1")
+
+    # Backward button (Previous Song)
+    back_button = tk.Button(popup, text="Backward", command=lambda: change_song(-1))
+    back_button.pack(pady=10)
+    back_button.config(background="firebrick1")
+
+# Create the main Tkinter window
+win = tk.Tk()
+win.title("Tone Tuner")
+win.geometry("750x400")
+win.config(background="gray23")
+
+# Dropdown menu for selecting MP3 files
+file_var = StringVar(win)
+file_var.set("Select a file")  # Default value for the dropdown
+
+# Dropdown menu for file selection
+dropdown = tk.OptionMenu(win, file_var, *mp3_files.keys())
+dropdown.pack(pady=10)
+dropdown.config(background="coral")
+
+# Play button
+play_button = tk.Button(win, text="Play", command=play_music)
+play_button.pack(pady=10)
+play_button.config(background="SeaGreen1")
+
+# Stop button
+stop_button = tk.Button(win, text="Stop", command=stop_music)
+stop_button.pack(pady=10)
+stop_button.config(background="firebrick1")
+
+# Add File button
+add_button = tk.Button(win, text="Add MP3", command=add_file)
+add_button.pack(pady=10)
+add_button.config(background="cyan2")
+
+# Run the Tkinter main loop
+win.mainloop()
