@@ -79,6 +79,10 @@ def play_music():
             mixer.music.play()  # Play the music
             is_playing = True
         show_current_song_popup(selected_song)  # Show a pop-up window with the current song playing
+        
+        # Start checking if the song is still playing and trigger the popup when it ends
+        check_song_end()  # Call a function to periodically check for song end
+
     else:
         messagebox.showerror("Error", "File not found. Please select a valid song.")  # Show an error if the file is not found
 ###ADDED TO SEE IF IT FIXES ISSUE
