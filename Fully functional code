@@ -81,7 +81,19 @@ def play_music():
         show_current_song_popup(selected_song)  # Show a pop-up window with the current song playing
     else:
         messagebox.showerror("Error", "File not found. Please select a valid song.")  # Show an error if the file is not found
+###ADDED TO SEE IF IT FIXES ISSUE
+def check_song_end():
+    # This function will check periodically if the song is still playing
+    if not mixer.music.get_busy():  # If music is not playing anymore
+        # Get the currently selected song from the Listbox
+        selected_song = get_selected_song()
+        if selected_song:
+            show_current_song_popup(selected_song)  # Show the pop-up for the current song
+        else:
+            messagebox.showwarning("Warning", "No song selected.")  # Show warning if no song is selected
 
+    # Call this function every 1000 milliseconds (1 second) to keep checking
+    win.after(1000, check_song_end)
 
 # Function to stop the music
 def stop_music():
