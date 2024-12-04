@@ -94,7 +94,7 @@ def check_song_end():
         selected_song = get_selected_song()
         if selected_song:
             show_current_song_popup(selected_song)  # Show the pop-up for the current song
-            show_current_song_popup.after(2000, show_current_song_popup.destroy)
+            show_current_song_popup.after(2000, show_current_song_popup.destroy)#fixed POP_UP issue being unable to close
         else:
             messagebox.showwarning("Warning", "No song selected.")  # Show warning if no song is selected
 
