@@ -86,7 +86,9 @@ def play_music():
 
     else:
         messagebox.showerror("Error", "File not found. Please select a valid song.")  # Show an error if the file is not found
-###ADDED TO SEE IF IT FIXES ISSUE(TODO:fixed issue in Test1, however Fully Functional Code file has a bug in pop-up still)
+        
+
+##ADDED TO SEE IF IT FIXES ISSUE(TODO:fixed issue in Test1, however Fully Functional Code file has a bug in pop-up still)
 def check_song_end():
     # This function will check periodically if the song is still playing
     if not mixer.music.get_busy():  # If music is not playing anymore
