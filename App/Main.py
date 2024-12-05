@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import StringVar, filedialog
+import pygame
 from pygame import mixer
 import os
 
